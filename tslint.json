@@ -26,7 +26,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      140
+      255
     ],
     "member-access": false,
     "member-ordering": [
@@ -117,13 +117,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "foil",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "foil",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

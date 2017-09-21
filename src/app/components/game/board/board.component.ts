@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SitesComponent } from '../sites/sites.component';
 
 @Component({
   selector: 'foil-board',

@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardComponent, DashboardComponent } from './components/index';
+import { DashboardComponent } from './components/index';
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {path: '', pathMatch: 'full', component: DashboardComponent },
-      {path: 'game/board', pathMatch: 'full', component: BoardComponent }
+      {path: 'game', loadChildren: 'app/components/game/game.module#GameModule' }
     ]
   }
-];
-
-export const RouteableComponents = [
-  DashboardComponent,
-  BoardComponent
 ];
 
 @NgModule({

@@ -5,17 +5,26 @@
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-scripts": "1.0.13"
+    "react-scripts": "1.0.13",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "flexbox-react": "^4.4.0"
   },
   "main": "src/main.js",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "dev": "nf start"
   },
   "devDependencies": {
-    "electron": "^1.7.8"
+    "electron": "^1.7.8",
+    "foreman": "^2.0.0"
   }
 }

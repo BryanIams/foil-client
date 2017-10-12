@@ -18,7 +18,7 @@ const DeckBuilder = ({ decks }) =>
           <Flexbox flexGrow={1} flexDirection="row">
             <Flexbox flexGrow={1}>
               {decks.map(deck =>
-                <div>{deck.description}</div>
+                <div key={deck.id}>{deck.description}</div>
               )}
             </Flexbox>
           </Flexbox>
@@ -30,8 +30,9 @@ const DeckBuilder = ({ decks }) =>
       </Flexbox>
     </div>);
 
-// DeckBuilder.propTypes = {
-//   decks: PropTypes.arrayOf(PropTypes.shape({ description: PropTypes.string })).isRequired
-// };
+DeckBuilder.propTypes = {
+  decks: PropTypes
+    .arrayOf(PropTypes.shape({ description: PropTypes.string, id: PropTypes.string })).isRequired
+};
 
 export default DeckBuilder;

@@ -7,12 +7,10 @@ import * as deckActions from '../actions/deckActions';
 
 class DeckBuilderPage extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-
-    this.props.actions.getDecks()
-    .then(decks => this.setState({ decks }));
+  componentWillMount() {
+    this.props.actions.getDecks();
   }
+
   render() {
     return (
       <DeckBuilder decks={this.props.decks} />
@@ -22,13 +20,14 @@ class DeckBuilderPage extends Component {
 
 DeckBuilderPage.propTypes = {
   decks: PropTypes.arrayOf(PropTypes.object).isRequired,
-  actions: PropTypes.shape({}).isRequired
+  actions: PropTypes.shape({
+    getDecks: PropTypes.func
+  }).isRequired
 };
 
-function mapStateToProps() {
-  const decks = [];
+function mapStateToProps(state) {
   return {
-    decks
+    decks: state.decks
   };
 }
 

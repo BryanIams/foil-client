@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Flexbox from 'flexbox-react';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Dropdown } from 'semantic-ui-react';
 
 const DeckBuilder = ({ decks }) =>
     (<div>
@@ -9,7 +11,7 @@ const DeckBuilder = ({ decks }) =>
         <Flexbox element="header" height="60px">
           <div className="backButton" data-tid="backButton">
             <Link to="/">
-              <i className="fa fa-arrow-left fa-3x" />
+              <RaisedButton label="Default" />
             </Link>
           </div>
         </Flexbox>
@@ -17,9 +19,9 @@ const DeckBuilder = ({ decks }) =>
         <Flexbox flexGrow={1}>
           <Flexbox flexGrow={1} flexDirection="row">
             <Flexbox flexGrow={1}>
-              {decks.map(deck =>
-                <div key={deck.id}>{deck.description}</div>
-              )}
+              <div>
+                <Dropdown placeholder="Deck" onChange={(e, { name, value }) => this.setState({ selection: value })} search selection options={decks.map(deck => ({ key: deck.id, value: deck.id, text: deck.title }))} />
+              </div>
             </Flexbox>
           </Flexbox>
         </Flexbox>
@@ -31,8 +33,8 @@ const DeckBuilder = ({ decks }) =>
     </div>);
 
 DeckBuilder.propTypes = {
-  decks: PropTypes
-    .arrayOf(PropTypes.shape({ description: PropTypes.string, id: PropTypes.string })).isRequired
+  decks: PropTypes.arrayOf(PropTypes.shape({ description: PropTypes.string, id: PropTypes.string })).isRequired,
+  deck: PropTypes.shape({ description: PropTypes.string, id: PropTypes.string })
 };
 
 export default DeckBuilder;

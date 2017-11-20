@@ -8,12 +8,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Dropdown } from 'semantic-ui-react';
 import * as decksActions from '../actions/decksActions';
 import * as deckActions from '../actions/deckActions';
+import * as cardsActions from '../actions/cardsActions';
 import DeckList from '../components/deckBuilder/DeckList';
+import CardsList from '../components/deckBuilder/CardsList';
 
 class DeckBuilderPage extends Component {
 
   componentWillMount() {
     this.props.actions.getDecks();
+    this.props.actions.getCards();
   }
 
   handleChange = (e, { name, value }) => { this.props.actions.selectDeck(this.props.decks[0]); }
@@ -51,6 +54,9 @@ class DeckBuilderPage extends Component {
               <Flexbox flexGrow={1}>
                 { this.renderDeckList() }
               </Flexbox>
+              <Flexbox flexGrow={1}>
+                <CardsList cards={this.props.cards} />
+              </Flexbox>
             </Flexbox>
           </Flexbox>
 
@@ -65,23 +71,30 @@ class DeckBuilderPage extends Component {
 
 DeckBuilderPage.propTypes = {
   decks: PropTypes.arrayOf(PropTypes.object).isRequired,
-  deck: PropTypes.object,
+  deck: PropTypes.shape({ description: PropTypes.string, id: PropTypes.string }),
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
   actions: PropTypes.shape({
     getDecks: PropTypes.func,
-    selectDeck: PropTypes.func
+    selectDeck: PropTypes.func,
+    getCards: PropTypes.func
   }).isRequired
+};
+
+DeckBuilderPage.defaultProps = {
+  deck: {}
 };
 
 function mapStateToProps(state) {
   return {
     decks: state.decks,
-    deck: state.deck
+    deck: state.deck,
+    cards: state.cards
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, decksActions, deckActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, decksActions, deckActions, cardsActions), dispatch)
   };
 }
 

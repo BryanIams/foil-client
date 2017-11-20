@@ -29,10 +29,4 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(Object.assign({}, decksActions, deckActions), dispatch)
-//   };
-// }
-
 export default connect(mapStateToProps)(DeckList);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Card from './card/Card';
 
 class CardsList extends Component {
 
@@ -11,7 +12,7 @@ class CardsList extends Component {
       const cards = [];
 
       for (let i = 0; i < this.props.cards.length; i++) {
-        cards.push(<div>{ this.props.cards[i].title }</div>);
+        cards.push(<div><Card card={this.props.cards[i]} /></div>);
       }
 
       return <div>{ cards }</div>;

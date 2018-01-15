@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Card from './card/Card';
 
 class DeckList extends Component {
 
   render() {
     return (
       <div>
-        One Ring: {this.props.deck.oneRing.description}
+        <Card card={this.props.deck.oneRing} />
       </div>
     );
   }
